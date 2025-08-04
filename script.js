@@ -310,25 +310,36 @@ function setupROICalculator() {
     const responseTimeEl = document.getElementById('responseTime');
 
     function calculateROI() {
-        const employees = parseInt(employeesInput?.value) || 25;
+        const employees = parseInt(employeesInput?.value) || 3;
         const customerInquiries = parseInt(customerInquiriesInput?.value) || 50;
         const avgHourlyWage = parseInt(avgHourlyWageInput?.value) || 25;
 
-        // Realistic calculations based on automation efficiency
-        // Average time per inquiry: 15 minutes manual vs 2 minutes automated = 13 minutes saved
+        // Enhanced calculations with multiple savings factors
+        // 1. Direct time savings from automation
         const timePerInquiry = 13; // minutes saved per inquiry
         const dailyTimeSaved = (customerInquiries * timePerInquiry) / 60; // hours per day
         const monthlyHoursSaved = Math.round(dailyTimeSaved * 22); // 22 working days per month
         
-        // Cost savings calculation
-        const monthlySavings = Math.round(monthlyHoursSaved * avgHourlyWage);
+        // 2. After-hours lead capture (60% of inquiries happen after hours)
+        const afterHoursInquiries = Math.round(customerInquiries * 0.6);
+        const afterHoursSavings = afterHoursInquiries * 22 * avgHourlyWage * 0.25; // 25% conversion value
+        
+        // 3. Reduced employee overhead (benefits, training, turnover)
+        const overheadReduction = employees * 500; // $500 per employee overhead savings
+        
+        // Total savings calculation
+        const directSavings = monthlyHoursSaved * avgHourlyWage;
+        const monthlySavings = Math.round(directSavings + afterHoursSavings + overheadReduction);
         const annualSavings = monthlySavings * 12;
 
         // Update display
         if (hoursSavedEl) hoursSavedEl.textContent = `${monthlyHoursSaved} hours`;
         if (monthlySavingsEl) monthlySavingsEl.textContent = `$${monthlySavings.toLocaleString()}`;
         if (annualSavingsEl) annualSavingsEl.textContent = `$${annualSavings.toLocaleString()}`;
-        if (responseTimeEl) responseTimeEl.textContent = `From 4 hours to 2 minutes`;
+        
+        // Update CTA button with dynamic savings
+        const ctaSavings = document.querySelector('.monthly-savings-cta');
+        if (ctaSavings) ctaSavings.textContent = monthlySavings.toLocaleString();
 
         // Track calculator usage
         trackEvent('savings_calculation', {
