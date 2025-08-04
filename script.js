@@ -63,65 +63,62 @@ function setupFormHandlers() {
     console.log('Form handlers initialized');
 }
 
-// ROI Calculator
+// Time Saved Calculator
 function setupROICalculator() {
     const inquiriesInput = document.getElementById('customerInquiries');
     const employeesInput = document.getElementById('employees');
-    const wageInput = document.getElementById('avgHourlyWage');
+    const taskTimeInput = document.getElementById('avgTaskTime');
     
-    if (!inquiriesInput || !employeesInput || !wageInput) return;
+    if (!inquiriesInput || !employeesInput || !taskTimeInput) return;
     
-    function calculateSavings() {
+    function calculateTimeSaved() {
         const inquiries = parseInt(inquiriesInput.value) || 50;
         const employees = parseInt(employeesInput.value) || 3;
-        const hourlyWage = parseFloat(wageInput.value) || 25;
+        const taskTime = parseFloat(taskTimeInput.value) || 6; // minutes per task
         
-        // Calculate monthly savings
-        const hoursPerDay = inquiries * 0.1; // Assume 6 minutes per inquiry
+        // Calculate time saved
+        const minutesPerDay = inquiries * taskTime;
+        const hoursPerDay = minutesPerDay / 60;
         const monthlyHours = hoursPerDay * 30;
-        const monthlyCost = monthlyHours * hourlyWage;
-        const cloudwowxCost = 143; // Monthly CloudwowX cost
-        const monthlySavings = Math.max(0, monthlyCost - cloudwowxCost);
+        const annualHours = monthlyHours * 12;
+        const productivityBoost = Math.round((hoursPerDay / (employees * 8)) * 100); // % of workday saved
         
         // Update display
-        const savingsElement = document.getElementById('monthlySavings');
-        const annualElement = document.getElementById('annualSavings');
-        const hoursElement = document.getElementById('hoursSaved');
-        const ctaElements = document.querySelectorAll('.monthly-savings-cta');
+        const monthlyElement = document.getElementById('monthlyTimeSaved');
+        const annualElement = document.getElementById('annualTimeSaved');
+        const dailyElement = document.getElementById('dailyTimeSaved');
+        const productivityElement = document.getElementById('productivityBoost');
         
-        if (savingsElement) savingsElement.textContent = `$${monthlySavings.toLocaleString()}`;
-        if (annualElement) annualElement.textContent = `$${(monthlySavings * 12).toLocaleString()}`;
-        if (hoursElement) hoursElement.textContent = `${Math.round(monthlyHours)} hours`;
-        
-        ctaElements.forEach(el => {
-            el.textContent = monthlySavings.toLocaleString();
-        });
+        if (monthlyElement) monthlyElement.textContent = `${Math.round(monthlyHours)} hours`;
+        if (annualElement) annualElement.textContent = `${Math.round(annualHours).toLocaleString()} hours`;
+        if (dailyElement) dailyElement.textContent = `${Math.round(hoursPerDay)} hours`;
+        if (productivityElement) productivityElement.textContent = `${Math.min(productivityBoost, 85)}%`;
         
         // Track calculation
         if (typeof gtag !== 'undefined') {
-            gtag('event', 'savings_calculation', {
+            gtag('event', 'time_calculation', {
                 employees: employees,
                 inquiries: inquiries,
-                hourly_wage: hourlyWage,
-                monthly_savings: monthlySavings
+                task_time: taskTime,
+                monthly_hours_saved: monthlyHours
             });
         }
         
-        console.log('Track Event:', 'savings_calculation', {
+        console.log('Track Event:', 'time_calculation', {
             employees: employees,
             inquiries: inquiries,
-            hourly_wage: hourlyWage,
-            monthly_savings: monthlySavings
+            task_time: taskTime,
+            monthly_hours_saved: monthlyHours
         });
     }
     
     // Add event listeners
-    [inquiriesInput, employeesInput, wageInput].forEach(input => {
-        input.addEventListener('input', calculateSavings);
+    [inquiriesInput, employeesInput, taskTimeInput].forEach(input => {
+        input.addEventListener('input', calculateTimeSaved);
     });
     
     // Initial calculation
-    calculateSavings();
+    calculateTimeSaved();
 }
 
 // Live Activity Simulator
