@@ -1,0 +1,496 @@
+// DOM Content Loaded
+document.addEventListener('DOMContentLoaded', function() {
+    initializeApp();
+});
+
+// Initialize Application
+function initializeApp() {
+    setupNavigation();
+    setupScrollEffects();
+    setupAnimations();
+    setupMobileMenu();
+    setupFormHandlers();
+    setupPerformanceOptimizations();
+}
+
+// Navigation Setup
+function setupNavigation() {
+    const navbar = document.querySelector('.navbar');
+    let lastScrollY = window.scrollY;
+    let ticking = false;
+
+    function updateNavbar() {
+        const scrollY = window.scrollY;
+        
+        if (scrollY > 100) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+        
+        // Hide/show navbar on scroll
+        if (scrollY > lastScrollY && scrollY > 200) {
+            navbar.style.transform = 'translateY(-100%)';
+        } else {
+            navbar.style.transform = 'translateY(0)';
+        }
+        
+        lastScrollY = scrollY;
+        ticking = false;
+    }
+
+    function requestTick() {
+        if (!ticking) {
+            requestAnimationFrame(updateNavbar);
+            ticking = true;
+        }
+    }
+
+    window.addEventListener('scroll', requestTick, { passive: true });
+    
+    // Smooth scroll for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                const offsetTop = target.offsetTop - 80;
+                window.scrollTo({
+                    top: offsetTop,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+}
+
+// Scroll to booking section
+function scrollToBooking() {
+    const bookingSection = document.getElementById('booking');
+    if (bookingSection) {
+        const offsetTop = bookingSection.offsetTop - 80;
+        window.scrollTo({
+            top: offsetTop,
+            behavior: 'smooth'
+        });
+    }
+}
+
+// Scroll to services section
+function scrollToServices() {
+    const servicesSection = document.getElementById('services');
+    if (servicesSection) {
+        const offsetTop = servicesSection.offsetTop - 80;
+        window.scrollTo({
+            top: offsetTop,
+            behavior: 'smooth'
+        });
+    }
+}
+
+// Scroll Effects Setup
+function setupScrollEffects() {
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animated');
+                
+                // Animate service cards with stagger
+                if (entry.target.classList.contains('services-grid')) {
+                    animateServiceCards();
+                }
+                
+                // Animate pricing features
+                if (entry.target.classList.contains('pricing-features')) {
+                    animatePricingFeatures();
+                }
+            }
+        });
+    }, observerOptions);
+
+    // Observe elements for animation
+    document.querySelectorAll('.service-card, .pricing-card, .booking-content, .hero-content').forEach(el => {
+        el.classList.add('animate-on-scroll');
+        observer.observe(el);
+    });
+
+    // Special observers for specific sections
+    const servicesGrid = document.querySelector('.services-grid');
+    const pricingFeatures = document.querySelector('.pricing-features');
+    
+    if (servicesGrid) observer.observe(servicesGrid);
+    if (pricingFeatures) observer.observe(pricingFeatures);
+}
+
+// Animate service cards with stagger effect
+function animateServiceCards() {
+    const cards = document.querySelectorAll('.service-card');
+    cards.forEach((card, index) => {
+        setTimeout(() => {
+            card.style.animation = `fadeInUp 0.6s ease forwards`;
+            card.style.animationDelay = `${index * 0.1}s`;
+        }, index * 100);
+    });
+}
+
+// Animate pricing features
+function animatePricingFeatures() {
+    const features = document.querySelectorAll('.feature');
+    features.forEach((feature, index) => {
+        setTimeout(() => {
+            feature.style.animation = `fadeInLeft 0.5s ease forwards`;
+            feature.style.opacity = '1';
+        }, index * 100);
+    });
+}
+
+// Setup animations for dashboard elements
+function setupAnimations() {
+    // Animate dashboard metrics on load
+    setTimeout(() => {
+        const metrics = document.querySelectorAll('.metric-value');
+        metrics.forEach((metric, index) => {
+            setTimeout(() => {
+                animateNumber(metric);
+            }, index * 200);
+        });
+    }, 1000);
+
+    // Animate chart bars
+    setTimeout(() => {
+        const bars = document.querySelectorAll('.bar');
+        bars.forEach((bar, index) => {
+            setTimeout(() => {
+                bar.style.animation = `growUp 1s ease-out forwards`;
+            }, index * 100);
+        });
+    }, 1500);
+
+    // Animate neural network
+    animateNeuralNetwork();
+}
+
+// Animate numbers with counting effect
+function animateNumber(element) {
+    const text = element.textContent;
+    const number = parseFloat(text.replace(/[^\d.]/g, ''));
+    const suffix = text.replace(/[\d.]/g, '');
+    
+    if (isNaN(number)) return;
+    
+    const duration = 2000;
+    const steps = 60;
+    const stepValue = number / steps;
+    const stepDuration = duration / steps;
+    
+    let currentNumber = 0;
+    let currentStep = 0;
+    
+    const interval = setInterval(() => {
+        currentNumber += stepValue;
+        currentStep++;
+        
+        if (currentStep >= steps) {
+            currentNumber = number;
+            clearInterval(interval);
+        }
+        
+        // Format number based on original format
+        let displayNumber;
+        if (text.includes('.')) {
+            displayNumber = currentNumber.toFixed(1);
+        } else {
+            displayNumber = Math.round(currentNumber);
+        }
+        
+        element.textContent = displayNumber + suffix;
+    }, stepDuration);
+}
+
+// Animate neural network background
+function animateNeuralNetwork() {
+    const nodes = document.querySelectorAll('.neural-node');
+    const connections = document.querySelectorAll('.neural-connection');
+    
+    // Randomize animation delays for more organic feel
+    nodes.forEach(node => {
+        const delay = Math.random() * 2;
+        node.style.animationDelay = `${delay}s`;
+    });
+    
+    connections.forEach(connection => {
+        const delay = Math.random() * 3;
+        connection.style.animationDelay = `${delay}s`;
+    });
+}
+
+// Mobile Menu Setup
+function setupMobileMenu() {
+    const mobileToggle = document.querySelector('.mobile-menu-toggle');
+    const navMenu = document.querySelector('.nav-menu');
+    
+    if (mobileToggle && navMenu) {
+        mobileToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            
+            // Toggle hamburger to X
+            const icon = mobileToggle.querySelector('i');
+            if (icon.classList.contains('fa-bars')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.add('fa-bars');
+                icon.classList.remove('fa-times');
+            }
+        });
+        
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!mobileToggle.contains(e.target) && !navMenu.contains(e.target)) {
+                navMenu.classList.remove('active');
+                const icon = mobileToggle.querySelector('i');
+                icon.classList.add('fa-bars');
+                icon.classList.remove('fa-times');
+            }
+        });
+        
+        // Close menu on link click (mobile)
+        navMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                const icon = mobileToggle.querySelector('i');
+                icon.classList.add('fa-bars');
+                icon.classList.remove('fa-times');
+            });
+        });
+    }
+}
+
+// Form Handlers Setup
+function setupFormHandlers() {
+    // Handle service card interactions
+    const serviceCards = document.querySelectorAll('.service-card');
+    serviceCards.forEach(card => {
+        card.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-10px) scale(1.02)';
+        });
+        
+        card.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0) scale(1)';
+        });
+    });
+    
+    // Handle button interactions with enhanced feedback
+    const buttons = document.querySelectorAll('button, .pricing-button');
+    buttons.forEach(button => {
+        button.addEventListener('click', function(e) {
+            // Create ripple effect
+            createRippleEffect(e, this);
+        });
+    });
+}
+
+// Create ripple effect for buttons
+function createRippleEffect(event, element) {
+    const ripple = document.createElement('span');
+    const rect = element.getBoundingClientRect();
+    const size = Math.max(rect.width, rect.height);
+    const x = event.clientX - rect.left - size / 2;
+    const y = event.clientY - rect.top - size / 2;
+    
+    ripple.style.width = ripple.style.height = size + 'px';
+    ripple.style.left = x + 'px';
+    ripple.style.top = y + 'px';
+    ripple.classList.add('ripple');
+    
+    // Add ripple styles
+    const style = document.createElement('style');
+    style.textContent = `
+        .ripple {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(0);
+            animation: ripple-animation 0.6s linear;
+            pointer-events: none;
+        }
+        @keyframes ripple-animation {
+            to {
+                transform: scale(4);
+                opacity: 0;
+            }
+        }
+    `;
+    document.head.appendChild(style);
+    
+    element.style.position = 'relative';
+    element.style.overflow = 'hidden';
+    element.appendChild(ripple);
+    
+    setTimeout(() => {
+        ripple.remove();
+    }, 600);
+}
+
+// Performance Optimizations
+function setupPerformanceOptimizations() {
+    // Lazy load images if any are added later
+    if ('IntersectionObserver' in window) {
+        const imageObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    img.src = img.dataset.src;
+                    img.classList.remove('lazy');
+                    imageObserver.unobserve(img);
+                }
+            });
+        });
+        
+        document.querySelectorAll('img[data-src]').forEach(img => {
+            imageObserver.observe(img);
+        });
+    }
+    
+    // Preload critical resources
+    preloadCriticalResources();
+    
+    // Setup performance monitoring
+    if ('PerformanceObserver' in window) {
+        monitorPerformance();
+    }
+}
+
+// Preload critical resources
+function preloadCriticalResources() {
+    const criticalResources = [
+        'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap',
+        'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css'
+    ];
+    
+    criticalResources.forEach(resource => {
+        const link = document.createElement('link');
+        link.rel = 'preload';
+        link.as = 'style';
+        link.href = resource;
+        document.head.appendChild(link);
+    });
+}
+
+// Monitor performance
+function monitorPerformance() {
+    const observer = new PerformanceObserver((list) => {
+        for (const entry of list.getEntries()) {
+            if (entry.entryType === 'measure') {
+                console.log(`Performance: ${entry.name} took ${entry.duration}ms`);
+            }
+        }
+    });
+    
+    observer.observe({ entryTypes: ['measure'] });
+    
+    // Measure page load time
+    window.addEventListener('load', () => {
+        performance.mark('page-loaded');
+        performance.measure('page-load-time', 'navigationStart', 'page-loaded');
+    });
+}
+
+// Utility Functions
+function debounce(func, wait) {
+    let timeout;
+    return function executedFunction(...args) {
+        const later = () => {
+            clearTimeout(timeout);
+            func(...args);
+        };
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+    };
+}
+
+function throttle(func, limit) {
+    let inThrottle;
+    return function() {
+        const args = arguments;
+        const context = this;
+        if (!inThrottle) {
+            func.apply(context, args);
+            inThrottle = true;
+            setTimeout(() => inThrottle = false, limit);
+        }
+    };
+}
+
+// Error Handling
+window.addEventListener('error', (e) => {
+    console.error('JavaScript Error:', e.error);
+    // Could implement error reporting here
+});
+
+window.addEventListener('unhandledrejection', (e) => {
+    console.error('Unhandled Promise Rejection:', e.reason);
+    // Could implement error reporting here
+});
+
+// Export functions for global access
+window.scrollToBooking = scrollToBooking;
+window.scrollToServices = scrollToServices;
+
+// Analytics Integration (if needed)
+function trackEvent(eventName, properties = {}) {
+    // Placeholder for analytics tracking
+    console.log('Track Event:', eventName, properties);
+    
+    // Example implementation:
+    // gtag('event', eventName, properties);
+    // or
+    // analytics.track(eventName, properties);
+}
+
+// Track important user interactions
+document.addEventListener('click', (e) => {
+    const target = e.target.closest('a, button');
+    if (target) {
+        const text = target.textContent.trim();
+        const href = target.href;
+        
+        if (href && href.includes('buy.stripe.com')) {
+            trackEvent('purchase_initiated', { product: 'AI Starter Kit' });
+        } else if (href && href.includes('cal.com')) {
+            trackEvent('booking_initiated', { type: 'consultation' });
+        } else if (text.includes('Book') || text.includes('Demo')) {
+            trackEvent('demo_requested', { button_text: text });
+        }
+    }
+});
+
+// Progressive Web App features (if needed)
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+        // Service worker registration would go here
+        // navigator.serviceWorker.register('/sw.js');
+    });
+}
+
+// Dark mode toggle (if needed)
+function toggleDarkMode() {
+    document.body.classList.toggle('light-mode');
+    localStorage.setItem('darkMode', !document.body.classList.contains('light-mode'));
+}
+
+// Initialize dark mode preference
+function initializeDarkMode() {
+    const darkModePreference = localStorage.getItem('darkMode');
+    if (darkModePreference === 'false') {
+        document.body.classList.add('light-mode');
+    }
+}
+
+// Call on page load
+// initializeDarkMode();
