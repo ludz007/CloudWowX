@@ -1632,8 +1632,8 @@ body::before {
 }
 
 .service-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(0, 102, 255, 0.2);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 15px rgba(0, 102, 255, 0.15);
     border-color: var(--accent-primary);
 }
 
