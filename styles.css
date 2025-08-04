@@ -186,6 +186,21 @@ body {
     overflow: hidden;
 }
 
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('attached_assets/generated_images/AI_network_visualization_background_1a16932d.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.1;
+    z-index: 1;
+}
+
 .hero-background {
     position: absolute;
     top: 0;
@@ -390,6 +405,45 @@ body {
 /* Hero Visual */
 .hero-visual {
     position: relative;
+}
+
+.hero-images {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-xl);
+}
+
+.main-hero-image, .secondary-hero-image {
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--radius-xl);
+    border: 1px solid var(--border-color);
+}
+
+.hero-dashboard-image, .hero-chatbot-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.main-hero-image:hover .hero-dashboard-image,
+.secondary-hero-image:hover .hero-chatbot-image {
+    transform: scale(1.05);
+}
+
+.services-hero-image {
+    margin-bottom: var(--spacing-lg);
+    text-align: center;
+}
+
+.services-team-image {
+    width: 300px;
+    height: auto;
+    border-radius: var(--radius-xl);
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-lg);
 }
 
 .ai-dashboard {
@@ -1263,6 +1317,11 @@ body {
         font-size: 3rem;
     }
     
+    .hero-images {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+    }
+    
     .booking-content {
         grid-template-columns: 1fr;
         gap: var(--spacing-2xl);
@@ -1303,6 +1362,10 @@ body {
     
     .services-grid {
         grid-template-columns: 1fr;
+    }
+    
+    .services-team-image {
+        width: 250px;
     }
     
     .footer-content {
