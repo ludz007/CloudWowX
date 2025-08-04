@@ -13,6 +13,7 @@
     --accent-primary: #2563eb;
     --accent-secondary: #3b82f6;
     --accent-tertiary: #1d4ed8;
+    --light-blue: #60a5fa;
     --text-primary: #ffffff;
     --text-secondary: #c5c5d2;
     --text-muted: #8e8ea0;
@@ -1538,7 +1539,7 @@ body {
 .service-price {
     font-size: 1.5rem;
     font-weight: var(--font-weight-bold);
-    color: var(--accent-primary);
+    color: var(--light-blue);
     margin-bottom: var(--spacing-lg);
 }
 
@@ -1568,7 +1569,7 @@ body {
     background: linear-gradient(135deg, #10b981 0%, #059669 100%);
 }
 .service-card-chatx .service-price {
-    color: #10b981;
+    color: var(--light-blue);
 }
 .service-card-chatx .service-link {
     color: #10b981;
@@ -1587,7 +1588,7 @@ body {
     background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
 }
 .service-card-whatsx .service-price {
-    color: #1e40af;
+    color: var(--light-blue);
 }
 .service-card-whatsx .service-link {
     color: #22c55e;
@@ -1606,7 +1607,7 @@ body {
     background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
 }
 .service-card-wsender .service-price {
-    color: #1e40af;
+    color: var(--light-blue);
 }
 .service-card-wsender .service-link {
     color: #f59e0b;
@@ -1625,7 +1626,7 @@ body {
     background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
 }
 .service-card-crm .service-price {
-    color: #1e40af;
+    color: var(--light-blue);
 }
 .service-card-crm .service-link {
     color: #8b5cf6;
@@ -1644,7 +1645,7 @@ body {
     background: linear-gradient(135deg, #ec4899 0%, #db2777 100%);
 }
 .service-card-davinci .service-price {
-    color: #1e40af;
+    color: var(--light-blue);
 }
 .service-card-davinci .service-link {
     color: #ec4899;
@@ -1663,7 +1664,7 @@ body {
     background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);
 }
 .service-card-aicaller .service-price {
-    color: #1e40af;
+    color: var(--light-blue);
 }
 .service-card-aicaller .service-link {
     color: #06b6d4;
@@ -1682,7 +1683,7 @@ body {
     background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
 }
 .service-card-mailx .service-price {
-    color: #1e40af;
+    color: var(--light-blue);
 }
 .service-card-mailx .service-link {
     color: #ef4444;
