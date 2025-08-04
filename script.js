@@ -10,6 +10,7 @@ function initializeApp() {
     setupAnimations();
     setupMobileMenu();
     setupFormHandlers();
+    setupROICalculator();
     setupPerformanceOptimizations();
 }
 
@@ -293,6 +294,60 @@ function setupFormHandlers() {
             createRippleEffect(e, this);
         });
     });
+}
+
+// ROI Calculator Setup
+function setupROICalculator() {
+    const employeesInput = document.getElementById('employees');
+    const revenueInput = document.getElementById('revenue');
+    const supportHoursInput = document.getElementById('support-hours');
+    
+    const annualSavingsEl = document.getElementById('annual-savings');
+    const roiPercentageEl = document.getElementById('roi-percentage');
+    const paybackPeriodEl = document.getElementById('payback-period');
+
+    function calculateROI() {
+        if (!employeesInput || !revenueInput || !supportHoursInput) return;
+        
+        const employees = parseInt(employeesInput.value) || 50;
+        const monthlyRevenue = parseInt(revenueInput.value) || 100000;
+        const supportHours = parseInt(supportHoursInput.value) || 40;
+
+        // AI automation savings calculations
+        const automationSavings = employees * 150; // $150 per employee per month
+        const supportSavings = supportHours * 25 * 4; // $25/hour saved, 4 weeks
+        const leadGenSavings = monthlyRevenue * 0.15; // 15% revenue increase from AI
+        
+        const monthlySavings = automationSavings + supportSavings + leadGenSavings;
+        const annualSavings = monthlySavings * 12;
+        const cloudwowxCost = 143 * 12; // Annual CloudwowX cost
+        
+        const netSavings = annualSavings - cloudwowxCost;
+        const roiPercentage = Math.round((netSavings / cloudwowxCost) * 100);
+        const paybackMonths = (cloudwowxCost / monthlySavings).toFixed(1);
+
+        // Update display
+        if (annualSavingsEl) annualSavingsEl.textContent = `$${netSavings.toLocaleString()}`;
+        if (roiPercentageEl) roiPercentageEl.textContent = `${roiPercentage}%`;
+        if (paybackPeriodEl) paybackPeriodEl.textContent = `${paybackMonths} months`;
+
+        // Track calculator usage
+        trackEvent('roi_calculation', {
+            employees: employees,
+            revenue: monthlyRevenue,
+            annual_savings: netSavings
+        });
+    }
+
+    // Add event listeners for real-time calculation
+    if (employeesInput && revenueInput && supportHoursInput) {
+        [employeesInput, revenueInput, supportHoursInput].forEach(input => {
+            input.addEventListener('input', calculateROI);
+        });
+        
+        // Initial calculation
+        calculateROI();
+    }
 }
 
 // Create ripple effect for buttons
