@@ -11,6 +11,8 @@ function initializeApp() {
     setupMobileMenu();
     setupFormHandlers();
     setupROICalculator();
+    setupLiveActivity();
+    setupCountdownTimer();
     setupPerformanceOptimizations();
 }
 
@@ -348,6 +350,90 @@ function setupROICalculator() {
         // Initial calculation
         calculateROI();
     }
+}
+
+// Live Activity Setup
+function setupLiveActivity() {
+    const activities = [
+        { name: "Michael from California", action: "just booked a consultation", time: 2 },
+        { name: "Sarah from New York", action: "started their AI transformation", time: 8 },
+        { name: "David from Texas", action: "just booked a consultation", time: 15 },
+        { name: "Lisa from Florida", action: "purchased the AI Starter Kit", time: 23 },
+        { name: "John from Chicago", action: "completed their AI setup", time: 31 },
+        { name: "Emma from Seattle", action: "just booked a consultation", time: 45 },
+        { name: "Carlos from Miami", action: "upgraded to premium AI package", time: 52 }
+    ];
+
+    const activityFeed = document.querySelector('.activity-feed');
+    if (!activityFeed) return;
+
+    function updateActivity() {
+        // Rotate activities every 8 seconds
+        const currentItems = activityFeed.querySelectorAll('.activity-item');
+        
+        // Add new activity at top
+        const randomActivity = activities[Math.floor(Math.random() * activities.length)];
+        const newItem = document.createElement('div');
+        newItem.className = 'activity-item';
+        newItem.innerHTML = `
+            <div class="activity-avatar">${Math.random() > 0.5 ? '👨‍💼' : '👩‍💼'}</div>
+            <div class="activity-content">
+                <strong>${randomActivity.name}</strong> ${randomActivity.action}
+                <div class="activity-time">just now</div>
+            </div>
+        `;
+        
+        activityFeed.insertBefore(newItem, activityFeed.firstChild);
+        
+        // Update timestamps
+        const timeElements = activityFeed.querySelectorAll('.activity-time');
+        timeElements.forEach((element, index) => {
+            if (index === 0) return; // Skip the "just now" item
+            const minutes = Math.floor(Math.random() * 60) + (index * 5);
+            element.textContent = `${minutes} minutes ago`;
+        });
+        
+        // Remove excess items (keep only 4)
+        while (activityFeed.children.length > 4) {
+            activityFeed.removeChild(activityFeed.lastChild);
+        }
+    }
+
+    // Update activity every 8 seconds
+    setInterval(updateActivity, 8000);
+}
+
+// Countdown Timer Setup
+function setupCountdownTimer() {
+    const hoursEl = document.getElementById('hours');
+    const minutesEl = document.getElementById('minutes');
+    const secondsEl = document.getElementById('seconds');
+    
+    if (!hoursEl || !minutesEl || !secondsEl) return;
+
+    // Set initial time (12 hours, 47 minutes, 23 seconds)
+    let totalSeconds = 12 * 3600 + 47 * 60 + 23;
+
+    function updateTimer() {
+        const hours = Math.floor(totalSeconds / 3600);
+        const minutes = Math.floor((totalSeconds % 3600) / 60);
+        const seconds = totalSeconds % 60;
+
+        hoursEl.textContent = hours.toString().padStart(2, '0');
+        minutesEl.textContent = minutes.toString().padStart(2, '0');
+        secondsEl.textContent = seconds.toString().padStart(2, '0');
+
+        totalSeconds--;
+
+        // Reset timer when it reaches 0
+        if (totalSeconds < 0) {
+            totalSeconds = 12 * 3600 + Math.floor(Math.random() * 60) * 60 + Math.floor(Math.random() * 60);
+        }
+    }
+
+    // Update timer every second
+    setInterval(updateTimer, 1000);
+    updateTimer(); // Initial call
 }
 
 // Create ripple effect for buttons
