@@ -1,26 +1,36 @@
-// DOM Content Loaded
+// DOM Content Loaded - Mobile Optimized
 document.addEventListener('DOMContentLoaded', function() {
     initializeApp();
 });
 
-// Initialize Application
+// Initialize Application - No Animations
 function initializeApp() {
+    optimizeForMobile();
     setupNavigation();
-    setupScrollEffects();
-    setupAnimations();
     setupMobileMenu();
     setupFormHandlers();
     setupROICalculator();
-    setupLiveActivity();
-    setupCountdownTimer();
     setupPerformanceOptimizations();
 }
 
-// Navigation Setup
+// Mobile-friendly optimizations
+function optimizeForMobile() {
+    const style = document.createElement('style');
+    style.innerHTML = `
+        *, *::before, *::after {
+            animation: none !important;
+            transition: none !important;
+            transform: none !important;
+        }
+        .scroll-hidden { opacity: 1 !important; }
+        .scroll-reveal { opacity: 1 !important; }
+    `;
+    document.head.appendChild(style);
+}
+
+// Navigation Setup - Static
 function setupNavigation() {
     const navbar = document.querySelector('.navbar');
-    let lastScrollY = window.scrollY;
-    let ticking = false;
 
     function updateNavbar() {
         const scrollY = window.scrollY;
@@ -30,26 +40,9 @@ function setupNavigation() {
         } else {
             navbar.classList.remove('scrolled');
         }
-        
-        // Hide/show navbar on scroll
-        if (scrollY > lastScrollY && scrollY > 200) {
-            navbar.style.transform = 'translateY(-100%)';
-        } else {
-            navbar.style.transform = 'translateY(0)';
-        }
-        
-        lastScrollY = scrollY;
-        ticking = false;
     }
 
-    function requestTick() {
-        if (!ticking) {
-            requestAnimationFrame(updateNavbar);
-            ticking = true;
-        }
-    }
-
-    window.addEventListener('scroll', requestTick, { passive: true });
+    window.addEventListener('scroll', updateNavbar, { passive: true });
     
     // Smooth scroll for navigation links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -60,7 +53,6 @@ function setupNavigation() {
                 const offsetTop = target.offsetTop - 80;
                 window.scrollTo({
                     top: offsetTop,
-                    behavior: 'smooth'
                 });
             }
         });
@@ -74,7 +66,6 @@ function scrollToBooking() {
         const offsetTop = bookingSection.offsetTop - 80;
         window.scrollTo({
             top: offsetTop,
-            behavior: 'smooth'
         });
     }
 }
@@ -86,13 +77,13 @@ function scrollToServices() {
         const offsetTop = servicesSection.offsetTop - 80;
         window.scrollTo({
             top: offsetTop,
-            behavior: 'smooth'
         });
     }
 }
 
-// Scroll Effects Setup
-function setupScrollEffects() {
+// Scroll Effects Setup - Disabled for Mobile
+    // All scroll effects disabled for mobile optimization
+    return;
     const observerOptions = {
         threshold: 0.1,
         rootMargin: '0px 0px -50px 0px'
@@ -153,7 +144,6 @@ function animatePricingFeatures() {
 }
 
 // Setup animations for dashboard elements
-function setupAnimations() {
     // Animate dashboard metrics on load
     setTimeout(() => {
         const metrics = document.querySelectorAll('.metric-value');
@@ -419,7 +409,6 @@ function setupLiveActivity() {
 }
 
 // Countdown Timer Setup
-function setupCountdownTimer() {
     const hoursEl = document.getElementById('hours');
     const minutesEl = document.getElementById('minutes');
     const secondsEl = document.getElementById('seconds');
