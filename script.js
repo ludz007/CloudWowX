@@ -298,52 +298,50 @@ function setupFormHandlers() {
     });
 }
 
-// ROI Calculator Setup
+// Time & Cost Savings Calculator Setup
 function setupROICalculator() {
     const employeesInput = document.getElementById('employees');
-    const revenueInput = document.getElementById('revenue');
-    const supportHoursInput = document.getElementById('support-hours');
+    const customerInquiriesInput = document.getElementById('customerInquiries');
+    const avgHourlyWageInput = document.getElementById('avgHourlyWage');
     
-    const annualSavingsEl = document.getElementById('annual-savings');
-    const roiPercentageEl = document.getElementById('roi-percentage');
-    const paybackPeriodEl = document.getElementById('payback-period');
+    const hoursSavedEl = document.getElementById('hoursSaved');
+    const monthlySavingsEl = document.getElementById('monthlySavings');
+    const annualSavingsEl = document.getElementById('annualSavings');
+    const responseTimeEl = document.getElementById('responseTime');
 
     function calculateROI() {
-        if (!employeesInput || !revenueInput || !supportHoursInput) return;
-        
-        const employees = parseInt(employeesInput.value) || 50;
-        const monthlyRevenue = parseInt(revenueInput.value) || 100000;
-        const supportHours = parseInt(supportHoursInput.value) || 40;
+        const employees = parseInt(employeesInput?.value) || 25;
+        const customerInquiries = parseInt(customerInquiriesInput?.value) || 50;
+        const avgHourlyWage = parseInt(avgHourlyWageInput?.value) || 25;
 
-        // AI automation savings calculations
-        const automationSavings = employees * 150; // $150 per employee per month
-        const supportSavings = supportHours * 25 * 4; // $25/hour saved, 4 weeks
-        const leadGenSavings = monthlyRevenue * 0.15; // 15% revenue increase from AI
+        // Realistic calculations based on automation efficiency
+        // Average time per inquiry: 15 minutes manual vs 2 minutes automated = 13 minutes saved
+        const timePerInquiry = 13; // minutes saved per inquiry
+        const dailyTimeSaved = (customerInquiries * timePerInquiry) / 60; // hours per day
+        const monthlyHoursSaved = Math.round(dailyTimeSaved * 22); // 22 working days per month
         
-        const monthlySavings = automationSavings + supportSavings + leadGenSavings;
+        // Cost savings calculation
+        const monthlySavings = Math.round(monthlyHoursSaved * avgHourlyWage);
         const annualSavings = monthlySavings * 12;
-        const cloudwowxCost = 143 * 12; // Annual CloudwowX cost
-        
-        const netSavings = annualSavings - cloudwowxCost;
-        const roiPercentage = Math.round((netSavings / cloudwowxCost) * 100);
-        const paybackMonths = (cloudwowxCost / monthlySavings).toFixed(1);
 
         // Update display
-        if (annualSavingsEl) annualSavingsEl.textContent = `$${netSavings.toLocaleString()}`;
-        if (roiPercentageEl) roiPercentageEl.textContent = `${roiPercentage}%`;
-        if (paybackPeriodEl) paybackPeriodEl.textContent = `${paybackMonths} months`;
+        if (hoursSavedEl) hoursSavedEl.textContent = `${monthlyHoursSaved} hours`;
+        if (monthlySavingsEl) monthlySavingsEl.textContent = `$${monthlySavings.toLocaleString()}`;
+        if (annualSavingsEl) annualSavingsEl.textContent = `$${annualSavings.toLocaleString()}`;
+        if (responseTimeEl) responseTimeEl.textContent = `From 4 hours to 2 minutes`;
 
         // Track calculator usage
-        trackEvent('roi_calculation', {
+        trackEvent('savings_calculation', {
             employees: employees,
-            revenue: monthlyRevenue,
-            annual_savings: netSavings
+            inquiries: customerInquiries,
+            hourly_wage: avgHourlyWage,
+            monthly_savings: monthlySavings
         });
     }
 
     // Add event listeners for real-time calculation
-    if (employeesInput && revenueInput && supportHoursInput) {
-        [employeesInput, revenueInput, supportHoursInput].forEach(input => {
+    if (employeesInput && customerInquiriesInput && avgHourlyWageInput) {
+        [employeesInput, customerInquiriesInput, avgHourlyWageInput].forEach(input => {
             input.addEventListener('input', calculateROI);
         });
         
