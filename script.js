@@ -438,61 +438,7 @@ window.addEventListener('unhandledrejection', (e) => {
     // Could implement error reporting here
 });
 
-// Booking Popup Functions
-function openBookingPopup() {
-    const modal = document.getElementById('bookingModal');
-    const modalContent = modal.querySelector('.modal-content');
-    
-    modal.style.display = 'block';
-    modal.classList.add('show');
-    modalContent.classList.add('show');
-    
-    // Prevent body scroll when modal is open
-    document.body.style.overflow = 'hidden';
-    
-    // Track event
-    trackEvent('booking_popup_opened', { source: 'virtual_meeting_button' });
-}
-
-function closeBookingPopup() {
-    const modal = document.getElementById('bookingModal');
-    const modalContent = modal.querySelector('.modal-content');
-    
-    modal.classList.remove('show');
-    modalContent.classList.remove('show');
-    
-    // Allow body scroll again
-    document.body.style.overflow = 'auto';
-    
-    setTimeout(() => {
-        modal.style.display = 'none';
-    }, 300);
-    
-    // Track event
-    trackEvent('booking_popup_closed');
-}
-
-// Close modal when clicking outside of it
-window.onclick = function(event) {
-    const modal = document.getElementById('bookingModal');
-    if (event.target === modal) {
-        closeBookingPopup();
-    }
-}
-
-// Close modal with Escape key
-document.addEventListener('keydown', function(event) {
-    if (event.key === 'Escape') {
-        const modal = document.getElementById('bookingModal');
-        if (modal.classList.contains('show')) {
-            closeBookingPopup();
-        }
-    }
-});
-
 // Export functions for global access
-window.openBookingPopup = openBookingPopup;
-window.closeBookingPopup = closeBookingPopup;
 window.scrollToBooking = scrollToBooking;
 window.scrollToServices = scrollToServices;
 

@@ -46,13 +46,15 @@ Preferred communication style: Simple, everyday language.
 - **Passive Event Listeners**: For improved scroll performance on mobile devices
 
 ### Integration Points
-- **CRM Integration**: All booking flows unified through CloudwowX CRM popup modal with embedded form (https://crm.cloudwowx.com/cwx/ps/forms/wtl/8ef1391d439c4f51e3d92266c55b364c)
+- **Cal.com Integration**: All booking flows unified through Cal.com scheduling system (https://cal.com/cloudwowx/cloudwowx-45-min-auto)
 - **Analytics Integration**: Event tracking implemented for booking interactions and user engagement
 - **Payment Processing**: Stripe integration active for AI Starter Kit purchases ($143/month)
-- **Unified User Journey**: All product links redirect to booking popup for consultation-based sales approach
+- **Unified User Journey**: All product links redirect to Cal.com booking for consultation-based sales approach
 
 ### Recent Updates (January 2025)
+- **Dark Theme Transformation**: Complete OpenAI-style dark theme implementation with teal accent colors (#00a67e)
+- **Cal.com Integration**: Replaced CRM iframe popup with direct Cal.com booking links for simplified user journey
 - **Dark Footer Redesign**: Implemented OpenAI-style dark footer with CloudwowX logo and comprehensive company description
-- **Unified Booking Flow**: All product and service links now redirect to CRM booking popup instead of external product pages
+- **Unified Booking Flow**: All product and service links now redirect to Cal.com booking instead of popup modals
 - **Custom Development Section**: Added footer section highlighting custom AI development capabilities with dedicated booking button
 - **Mobile Optimization**: Enhanced responsive design for footer and booking flows across all device sizes
