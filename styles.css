@@ -6,26 +6,26 @@
 }
 
 :root {
-    /* Color Palette */
-    --primary-bg: #f8fafc;
-    --secondary-bg: #ffffff;
-    --card-bg: #ffffff;
-    --accent-primary: #2563eb;
-    --accent-secondary: #3b82f6;
-    --accent-tertiary: #6366f1;
-    --text-primary: #1e293b;
-    --text-secondary: #475569;
-    --text-muted: #64748b;
-    --border-color: #e2e8f0;
-    --success-color: #059669;
-    --warning-color: #d97706;
+    /* Color Palette - OpenAI Dark Theme */
+    --primary-bg: #0f1419;
+    --secondary-bg: #1a1f29;
+    --card-bg: #1a1f29;
+    --accent-primary: #00a67e;
+    --accent-secondary: #10a37f;
+    --accent-tertiary: #1a7f64;
+    --text-primary: #ffffff;
+    --text-secondary: #c5c5d2;
+    --text-muted: #8e8ea0;
+    --border-color: #2a2f3a;
+    --success-color: #00a67e;
+    --warning-color: #ff6b35;
     
-    /* Gradients */
-    --gradient-primary: linear-gradient(135deg, #2563eb 0%, #3b82f6 50%, #6366f1 100%);
-    --gradient-card: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
-    --gradient-hero: radial-gradient(circle at 30% 20%, rgba(37, 99, 235, 0.05) 0%, transparent 50%),
-                     radial-gradient(circle at 70% 80%, rgba(59, 130, 246, 0.05) 0%, transparent 50%),
-                     linear-gradient(135deg, #f8fafc 0%, #ffffff 100%);
+    /* Gradients - OpenAI Dark Theme */
+    --gradient-primary: linear-gradient(135deg, #00a67e 0%, #10a37f 50%, #1a7f64 100%);
+    --gradient-card: linear-gradient(145deg, #1a1f29 0%, #242936 100%);
+    --gradient-hero: radial-gradient(circle at 30% 20%, rgba(0, 166, 126, 0.08) 0%, transparent 50%),
+                     radial-gradient(circle at 70% 80%, rgba(16, 163, 127, 0.06) 0%, transparent 50%),
+                     linear-gradient(135deg, #0f1419 0%, #1a1f29 100%);
     
     /* Typography */
     --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -53,13 +53,13 @@
     --radius-xl: 1rem;
     --radius-2xl: 1.5rem;
     
-    /* Shadows */
-    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
-    --shadow-glow: 0 0 20px rgba(0, 212, 255, 0.3);
-    --shadow-glow-purple: 0 0 20px rgba(99, 102, 241, 0.3);
+    /* Shadows - OpenAI Dark Theme */
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.4);
+    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.5);
+    --shadow-glow: 0 0 20px rgba(0, 166, 126, 0.3);
+    --shadow-glow-purple: 0 0 20px rgba(0, 166, 126, 0.2);
 }
 
 html {
@@ -82,14 +82,14 @@ body {
     left: 0;
     right: 0;
     z-index: 1000;
-    background: rgba(248, 250, 252, 0.95);
+    background: rgba(15, 20, 25, 0.95);
     backdrop-filter: blur(20px);
     border-bottom: 1px solid var(--border-color);
     transition: all 0.3s ease;
 }
 
 .navbar.scrolled {
-    background: rgba(248, 250, 252, 0.98);
+    background: rgba(15, 20, 25, 0.98);
     box-shadow: var(--shadow-lg);
 }
 
@@ -215,7 +215,7 @@ body {
 
 .hero-demo-video:hover {
     border-color: var(--accent-primary);
-    box-shadow: 0 20px 40px -5px rgba(37, 99, 235, 0.3);
+    box-shadow: 0 20px 40px -5px rgba(0, 166, 126, 0.3);
     transform: translateY(-2px);
 }
 
@@ -286,8 +286,8 @@ body {
     display: inline-flex;
     align-items: center;
     gap: var(--spacing-sm);
-    background: rgba(0, 212, 255, 0.1);
-    border: 1px solid rgba(0, 212, 255, 0.3);
+    background: rgba(0, 166, 126, 0.1);
+    border: 1px solid rgba(0, 166, 126, 0.3);
     padding: var(--spacing-sm) var(--spacing-md);
     border-radius: var(--radius-2xl);
     color: var(--accent-primary);
@@ -383,7 +383,7 @@ body {
 
 .secondary-button:hover {
     border-color: var(--accent-primary);
-    background: rgba(0, 212, 255, 0.1);
+    background: rgba(0, 166, 126, 0.1);
     color: var(--accent-primary);
 }
 
@@ -1325,7 +1325,8 @@ body {
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(4px);
     backdrop-filter: blur(5px);
 }
 
