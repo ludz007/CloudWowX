@@ -2613,3 +2613,111 @@ body {
         font-size: 1.25rem;
     }
 }
+
+/* Professional Image Styling - Consistent Sizing and Centering */
+.card-image, .service-img {
+    width: 100%;
+    height: 240px;
+    object-fit: cover;
+    border-radius: 8px 8px 0 0;
+    transition: transform 0.3s ease;
+    display: block;
+    margin: 0 auto;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-md);
+}
+
+.roi-chart, .success-infographic, 
+.timeline-image, .comparison-image {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: var(--radius-xl);
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-lg);
+    margin: 0 auto;
+    display: block;
+}
+
+.guarantee-image {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 0 auto;
+    display: block;
+}
+
+.author-image, .client-portrait {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 0 auto;
+    display: block;
+}
+
+.consultation-image {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    border-radius: var(--radius-xl);
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-lg);
+    margin: 0 auto;
+    display: block;
+}
+
+.availability-calendar {
+    max-width: 400px;
+    height: 250px;
+    object-fit: cover;
+    border-radius: var(--radius-lg);
+    margin: 0 auto;
+    display: block;
+}
+
+/* Service Card Hover Effects */
+.service-card:hover .card-image {
+    transform: scale(1.05);
+}
+
+/* Professional Center Alignment */
+.section-header, .roi-info, .process-header,
+.comparison-header, .urgency-header,
+.success-stories-header, .booking-content {
+    text-align: center;
+    margin-bottom: var(--spacing-2xl);
+}
+
+.roi-image, .stories-image, .process-visual,
+.comparison-chart, .urgency-visual,
+.booking-hero-image {
+    text-align: center;
+    margin: var(--spacing-xl) auto;
+}
+
+/* Mobile Image Adjustments */
+@media (max-width: 768px) {
+    .card-image, .service-img {
+        height: 200px;
+    }
+    
+    .roi-chart, .success-infographic, 
+    .timeline-image, .comparison-image {
+        height: 250px;
+    }
+    
+    .consultation-image {
+        height: 220px;
+    }
+    
+    .guarantee-image {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .availability-calendar {
+        height: 200px;
+    }
+}
