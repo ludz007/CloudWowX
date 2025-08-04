@@ -20,10 +20,10 @@
             <div class="nav-menu">
                 <a href="#services" class="nav-link">Services</a>
                 <a href="#pricing" class="nav-link">Pricing</a>
-                <a href="#booking" class="nav-link">Book Demo</a>
-                <button class="cta-button" onclick="scrollToBooking()">
+                <a href="javascript:void(0)" class="nav-link" onclick="openBookingPopup()">Book Meeting</a>
+                <button class="cta-button" onclick="openBookingPopup()">
                     <i class="fas fa-calendar-alt"></i>
-                    Get Started
+                    Book Virtual Meeting
                 </button>
             </div>
             <div class="mobile-menu-toggle">
@@ -76,9 +76,9 @@
                     </div>
                 </div>
                 <div class="hero-cta">
-                    <button class="primary-button" onclick="scrollToBooking()">
+                    <button class="primary-button" onclick="openBookingPopup()">
                         <i class="fas fa-video"></i>
-                        Book Free Demo
+                        Book Virtual Meeting
                     </button>
                     <button class="secondary-button" onclick="scrollToServices()">
                         <i class="fas fa-play-circle"></i>
@@ -283,9 +283,9 @@
                         <i class="fas fa-rocket"></i>
                         Start Your AI Journey
                     </a>
-                    <button class="consultation-button" onclick="scrollToBooking()">
+                    <button class="consultation-button" onclick="openBookingPopup()">
                         <i class="fas fa-calendar-check"></i>
-                        Book Free Consultation
+                        Book Virtual Meeting
                     </button>
                 </div>
             </div>
@@ -380,6 +380,19 @@
             </div>
         </div>
     </footer>
+
+    <!-- Booking Popup Modal -->
+    <div id="bookingModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Book Your Virtual Meeting</h3>
+                <span class="close-button" onclick="closeBookingPopup()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <iframe width="600" height="850" src="https://crm.cloudwowx.com/cwx/ps/forms/wtl/8ef1391d439c4f51e3d92266c55b364c" frameborder="0" sandbox="allow-top-navigation allow-forms allow-scripts allow-same-origin allow-popups" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>
