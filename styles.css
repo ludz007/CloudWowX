@@ -193,7 +193,7 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    background-image: url('attached_assets/generated_images/AI_network_visualization_background_1a16932d.png');
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
