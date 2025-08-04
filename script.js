@@ -176,6 +176,12 @@ function setupAnimations() {
 
     // Animate neural network
     animateNeuralNetwork();
+    
+    // Initialize parallax effects
+    initParallaxEffects();
+    
+    // Initialize card hover effects
+    initCardEffects();
 }
 
 // Animate numbers with counting effect
@@ -644,3 +650,57 @@ function initializeDarkMode() {
 
 // Call on page load
 // initializeDarkMode();
+
+// Initialize parallax effects
+function initParallaxEffects() {
+    const parallaxElements = document.querySelectorAll('.hero-content, .section-header, .service-card');
+    
+    window.addEventListener('scroll', () => {
+        const scrolled = window.pageYOffset;
+        
+        parallaxElements.forEach(el => {
+            const speed = el.dataset.speed || 0.5;
+            const yPos = -(scrolled * speed);
+            
+            if (isElementInViewport(el)) {
+                el.style.transform = `translateY(${yPos}px)`;
+            }
+        });
+    }, { passive: true });
+}
+
+// Initialize card hover effects
+function initCardEffects() {
+    const cards = document.querySelectorAll('.service-card, .problem-item, .faq-item');
+    
+    cards.forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            
+            const rotateX = (y - centerY) / 10;
+            const rotateY = (centerX - x) / 10;
+            
+            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(20px)`;
+        });
+        
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateZ(0)';
+        });
+    });
+}
+
+// Helper function to check if element is in viewport
+function isElementInViewport(el) {
+    const rect = el.getBoundingClientRect();
+    return (
+        rect.top >= 0 &&
+        rect.left >= 0 &&
+        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+        rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+    );
+}
