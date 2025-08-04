@@ -293,11 +293,11 @@ body {
 }
 
 .hero-title {
-    font-size: 3.5rem;
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
     font-weight: var(--font-weight-black);
-    line-height: 1.1;
-    margin-bottom: var(--spacing-lg);
-    
+    line-height: 1.2;
+    margin-bottom: var(--spacing-xl);
+    letter-spacing: -0.02em;
 }
 
     to {
@@ -320,14 +320,16 @@ body {
 .hero-description {
     font-size: 1.25rem;
     color: var(--text-secondary);
-    margin-bottom: var(--spacing-2xl);
-    line-height: 1.6;
+    margin-bottom: var(--spacing-3xl);
+    line-height: 1.7;
+    max-width: 90%;
 }
 
 .hero-stats {
     display: flex;
-    gap: var(--spacing-2xl);
-    margin-bottom: var(--spacing-2xl);
+    gap: var(--spacing-3xl);
+    margin-bottom: var(--spacing-3xl);
+    flex-wrap: wrap;
 }
 
 .stat {
@@ -349,8 +351,9 @@ body {
 
 .hero-cta {
     display: flex;
-    gap: var(--spacing-md);
+    gap: var(--spacing-lg);
     align-items: center;
+    flex-wrap: wrap;
 }
 
 .primary-button {
@@ -375,16 +378,18 @@ body {
 .secondary-button {
     background: transparent;
     border: 2px solid var(--border-color);
-    padding: var(--spacing-md) var(--spacing-xl);
+    padding: var(--spacing-lg) var(--spacing-xl);
     border-radius: var(--radius-lg);
     color: var(--text-primary);
     font-weight: var(--font-weight-semibold);
     font-size: 1.1rem;
     cursor: pointer;
-    
     display: flex;
     align-items: center;
     gap: var(--spacing-sm);
+    min-height: 50px;
+    text-decoration: none;
+    justify-content: center;
 }
 
 
@@ -513,7 +518,36 @@ body {
 .container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 var(--spacing-md);
+    padding: 0 var(--spacing-xl);
+}
+
+/* Improved Section Spacing */
+section {
+    padding: var(--spacing-3xl) 0;
+}
+
+section:first-of-type {
+    padding-top: var(--spacing-2xl);
+}
+
+/* Better readability spacing */
+h1, h2, h3, h4, h5, h6 {
+    margin-bottom: var(--spacing-lg);
+    line-height: 1.3;
+}
+
+p {
+    margin-bottom: var(--spacing-md);
+    line-height: 1.7;
+}
+
+/* Improved content spacing */
+.hero-content {
+    margin-bottom: var(--spacing-3xl);
+}
+
+.service-card, .pricing-card {
+    margin-bottom: var(--spacing-xl);
 }
 
 /* Section Header */
@@ -539,8 +573,28 @@ body {
 /* Services Section */
 .services {
     padding: var(--spacing-3xl) 0;
-    background: var(--primary-bg);
+    background: var(--secondary-bg);
     border-top: 1px solid var(--border-color);
+}
+
+.services-header {
+    text-align: center;
+    margin-bottom: var(--spacing-3xl);
+}
+
+.service-title {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: var(--font-weight-bold);
+    margin-bottom: var(--spacing-lg);
+    line-height: 1.3;
+}
+
+.service-description {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    max-width: 600px;
+    margin: 0 auto;
 }
 
 .services-grid {
@@ -552,9 +606,30 @@ body {
 .service-card {
     background: var(--gradient-card);
     border-radius: var(--radius-xl);
-    padding: var(--spacing-xl);
+    padding: var(--spacing-2xl);
     border: 1px solid var(--border-color);
-    
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.service-card h3 {
+    font-size: 1.5rem;
+    font-weight: var(--font-weight-bold);
+    margin-bottom: var(--spacing-lg);
+    color: var(--text-primary);
+}
+
+.service-card p {
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: var(--spacing-lg);
+    flex-grow: 1;
+}
+
+.service-card .primary-button {
+    margin-top: auto;
+    align-self: flex-start;
 }
 
 
@@ -2062,12 +2137,42 @@ body {
 }
 
 @media (max-width: 768px) {
+    .container {
+        padding: 0 var(--spacing-md);
+    }
+    
+    section {
+        padding: var(--spacing-2xl) 0;
+    }
+    
     .nav-menu {
         display: none;
     }
     
     .mobile-menu-toggle {
         display: block;
+    }
+    
+    .hero-container {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-xl);
+        text-align: center;
+        padding: 0 var(--spacing-sm);
+    }
+    
+    .hero-description {
+        max-width: 100%;
+        font-size: 1.1rem;
+    }
+    
+    .hero-stats {
+        gap: var(--spacing-lg);
+        justify-content: center;
+    }
+    
+    .hero-cta {
+        justify-content: center;
+        gap: var(--spacing-md);
     }
     
     .hero-title {
