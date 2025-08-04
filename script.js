@@ -63,41 +63,32 @@ function setupFormHandlers() {
     console.log('Form handlers initialized');
 }
 
-// Time Saved Calculator
+// Simplified Time Saved Calculator
 function setupROICalculator() {
     const inquiriesInput = document.getElementById('customerInquiries');
-    const employeesInput = document.getElementById('employees');
     const taskTimeInput = document.getElementById('avgTaskTime');
     
-    if (!inquiriesInput || !employeesInput || !taskTimeInput) return;
+    if (!inquiriesInput || !taskTimeInput) return;
     
     function calculateTimeSaved() {
         const inquiries = parseInt(inquiriesInput.value) || 50;
-        const employees = parseInt(employeesInput.value) || 3;
-        const taskTime = parseFloat(taskTimeInput.value) || 6; // minutes per task
+        const taskTime = parseFloat(taskTimeInput.value) || 5; // minutes per task
         
-        // Calculate time saved
-        const minutesPerDay = inquiries * taskTime;
+        // Calculate time saved (assume 80% automation rate)
+        const minutesPerDay = inquiries * taskTime * 0.8; // 80% of tasks automated
         const hoursPerDay = minutesPerDay / 60;
-        const monthlyHours = hoursPerDay * 30;
-        const annualHours = monthlyHours * 12;
-        const productivityBoost = Math.round((hoursPerDay / (employees * 8)) * 100); // % of workday saved
+        const monthlyHours = Math.round(hoursPerDay * 22); // Working days per month
         
         // Update display
         const monthlyElement = document.getElementById('monthlyTimeSaved');
-        const annualElement = document.getElementById('annualTimeSaved');
         const dailyElement = document.getElementById('dailyTimeSaved');
-        const productivityElement = document.getElementById('productivityBoost');
         
-        if (monthlyElement) monthlyElement.textContent = `${Math.round(monthlyHours)} hours`;
-        if (annualElement) annualElement.textContent = `${Math.round(annualHours).toLocaleString()} hours`;
+        if (monthlyElement) monthlyElement.textContent = `${monthlyHours} hours`;
         if (dailyElement) dailyElement.textContent = `${Math.round(hoursPerDay)} hours`;
-        if (productivityElement) productivityElement.textContent = `${Math.min(productivityBoost, 85)}%`;
         
         // Track calculation
         if (typeof gtag !== 'undefined') {
             gtag('event', 'time_calculation', {
-                employees: employees,
                 inquiries: inquiries,
                 task_time: taskTime,
                 monthly_hours_saved: monthlyHours
@@ -105,7 +96,6 @@ function setupROICalculator() {
         }
         
         console.log('Track Event:', 'time_calculation', {
-            employees: employees,
             inquiries: inquiries,
             task_time: taskTime,
             monthly_hours_saved: monthlyHours
@@ -113,7 +103,7 @@ function setupROICalculator() {
     }
     
     // Add event listeners
-    [inquiriesInput, employeesInput, taskTimeInput].forEach(input => {
+    [inquiriesInput, taskTimeInput].forEach(input => {
         input.addEventListener('input', calculateTimeSaved);
     });
     

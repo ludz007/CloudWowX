@@ -275,51 +275,47 @@
                 </div>
                 <div class="time-calculator-widget">
                     <div class="calculator-form">
-                        <h3>Quick 3-Question Calculator</h3>
-                        <div class="input-group">
-                            <label for="customerInquiries">How many customer messages do you get daily?</label>
-                            <input type="number" id="customerInquiries" value="50" min="10" max="1000">
-                            <small>Include emails, chats, calls, and social media</small>
+                        <h3>See Your Time Savings</h3>
+                        <p class="calculator-intro">Answer these simple questions to see how much time AI can save your team:</p>
+                        
+                        <div class="simple-inputs">
+                            <div class="input-row">
+                                <label for="customerInquiries">Daily customer messages:</label>
+                                <input type="number" id="customerInquiries" value="50" min="10" max="500">
+                            </div>
+                            <div class="input-row">
+                                <label for="avgTaskTime">Minutes per message:</label>
+                                <input type="number" id="avgTaskTime" value="5" min="1" max="30">
+                            </div>
                         </div>
-                        <div class="input-group">
-                            <label for="employees">How many team members handle these tasks?</label>
-                            <input type="number" id="employees" value="3" min="1" max="50">
-                            <small>Customer service, sales, and support teams</small>
-                        </div>
-                        <div class="input-group">
-                            <label for="avgTaskTime">Average minutes per task?</label>
-                            <input type="number" id="avgTaskTime" value="6" min="1" max="60">
-                            <small>Time to read, understand, and respond to each message</small>
-                        </div>
+                        
                         <div class="time-results">
-                            <div class="time-highlight">
-                                <h4>Time Saved with CloudwowX:</h4>
-                                <div class="big-time" id="monthlyTimeSaved">150 hours</div>
-                                <p>That's <span id="annualTimeSaved">1,800 hours</span> per year!</p>
+                            <div class="main-result">
+                                <div class="result-title">AI saves your team:</div>
+                                <div class="big-time" id="monthlyTimeSaved">125 hours</div>
+                                <div class="result-subtitle">every month</div>
                             </div>
-                            <div class="result-breakdown">
-                                <div class="result-item">
-                                    <div class="result-label">Daily Time Saved</div>
-                                    <div class="result-value" id="dailyTimeSaved">5 hours</div>
+                            
+                            <div class="simple-breakdown">
+                                <div class="breakdown-item">
+                                    <span class="breakdown-label">Daily time saved:</span>
+                                    <span class="breakdown-value" id="dailyTimeSaved">4 hours</span>
                                 </div>
-                                <div class="result-item">
-                                    <div class="result-label">Response Time</div>
-                                    <div class="result-value">From 4+ hours to 2 minutes</div>
+                                <div class="breakdown-item">
+                                    <span class="breakdown-label">Response time:</span>
+                                    <span class="breakdown-value">From hours to seconds</span>
                                 </div>
-                                <div class="result-item">
-                                    <div class="result-label">Productivity Boost</div>
-                                    <div class="result-value" id="productivityBoost">75%</div>
-                                </div>
-                                <div class="result-item">
-                                    <div class="result-label">Team Focus</div>
-                                    <div class="result-value">Strategic work instead of repetitive tasks</div>
+                                <div class="breakdown-item">
+                                    <span class="breakdown-label">Team benefit:</span>
+                                    <span class="breakdown-value">Focus on important work</span>
                                 </div>
                             </div>
                         </div>
+                        
                         <div class="calculator-cta">
                             <a href="https://cal.com/cloudwowx/cloudwowx-45-min-auto" target="_blank" class="primary-button full-width">
                                 <i class="fas fa-calendar"></i>
-                                Get My Time-Saving Strategy
+                                See How This Works for My Business
                             </a>
                         </div>
                     </div>
