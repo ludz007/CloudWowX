@@ -659,7 +659,7 @@ function initParallaxEffects() {
         const scrolled = window.pageYOffset;
         
         parallaxElements.forEach(el => {
-            const speed = el.dataset.speed || 0.5;
+            const speed = el.dataset.speed || 0.1; // Reduced from 0.5 to 0.1 for much gentler effect
             const yPos = -(scrolled * speed);
             
             if (isElementInViewport(el)) {
@@ -671,26 +671,12 @@ function initParallaxEffects() {
 
 // Initialize card hover effects
 function initCardEffects() {
+    // Removed 3D rotation effects for smoother experience
     const cards = document.querySelectorAll('.service-card, .problem-item, .faq-item');
     
     cards.forEach(card => {
-        card.addEventListener('mousemove', (e) => {
-            const rect = card.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-            
-            const centerX = rect.width / 2;
-            const centerY = rect.height / 2;
-            
-            const rotateX = (y - centerY) / 10;
-            const rotateY = (centerX - x) / 10;
-            
-            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(20px)`;
-        });
-        
-        card.addEventListener('mouseleave', () => {
-            card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateZ(0)';
-        });
+        // Simple scale effect on hover instead of 3D rotation
+        card.style.transition = 'all 0.3s ease';
     });
 }
 

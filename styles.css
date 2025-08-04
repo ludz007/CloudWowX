@@ -245,13 +245,13 @@ body::before {
     border-radius: 50%;
     top: -200px;
     right: -200px;
-    animation: float 15s ease-in-out infinite;
+    animation: float 20s ease-in-out infinite;
 }
 
 @keyframes float {
     0%, 100% { transform: translate(0, 0) scale(1); }
-    33% { transform: translate(-50px, 50px) scale(1.1); }
-    66% { transform: translate(50px, -30px) scale(0.9); }
+    33% { transform: translate(-20px, 20px) scale(1.05); }
+    66% { transform: translate(20px, -10px) scale(0.95); }
 }
 
 .hero::before {
@@ -263,7 +263,7 @@ body::before {
     bottom: 0;
     background: radial-gradient(circle at 50% 50%, rgba(0, 102, 255, 0.05) 0%, transparent 70%);
     z-index: 1;
-    animation: pulse 4s ease-in-out infinite;
+    animation: pulse 6s ease-in-out infinite;
 }
 
 @keyframes pulse {
@@ -333,18 +333,18 @@ body::before {
     height: 8px;
     background: var(--accent-primary);
     border-radius: 50%;
-    animation: pulseNode 2s infinite;
+    animation: pulseNode 3s infinite;
     box-shadow: var(--shadow-glow);
 }
 
 @keyframes pulseNode {
     0%, 100% { 
         transform: scale(1);
-        opacity: 0.8;
+        opacity: 0.6;
     }
     50% { 
-        transform: scale(1.5);
-        opacity: 1;
+        transform: scale(1.2);
+        opacity: 0.8;
     }
 }
 
@@ -403,7 +403,7 @@ body::before {
 @keyframes heroTitleFade {
     from {
         opacity: 0;
-        transform: translateY(30px);
+        transform: translateY(15px);
     }
     to {
         opacity: 1;
@@ -421,7 +421,7 @@ body::before {
 
 @keyframes textShimmer {
     0%, 100% { filter: brightness(1) saturate(1); }
-    50% { filter: brightness(1.2) saturate(1.2); }
+    50% { filter: brightness(1.1) saturate(1.05); }
 }
 
 .hero-description {
@@ -469,7 +469,7 @@ body::before {
     font-weight: var(--font-weight-bold);
     font-size: 1.1rem;
     cursor: pointer;
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition: all 0.3s ease;
     display: flex;
     align-items: center;
     gap: var(--spacing-sm);
@@ -497,8 +497,8 @@ body::before {
 }
 
 .primary-button:hover {
-    transform: translateY(-3px) scale(1.02);
-    box-shadow: 0 10px 40px rgba(0, 102, 255, 0.6);
+    transform: translateY(-1px) scale(1.01);
+    box-shadow: 0 5px 20px rgba(0, 102, 255, 0.3);
 }
 
 .secondary-button {
@@ -518,9 +518,9 @@ body::before {
 
 .secondary-button:hover {
     border-color: var(--accent-primary);
-    background: rgba(0, 102, 255, 0.1);
+    background: rgba(0, 102, 255, 0.05);
     color: var(--accent-primary);
-    transform: translateY(-2px);
+    transform: translateY(-1px);
 }
 
 /* Hero Visual */
@@ -699,11 +699,9 @@ body::before {
     border-radius: var(--radius-xl);
     padding: var(--spacing-xl);
     border: 1px solid var(--border-color);
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
-    transform-style: preserve-3d;
-    perspective: 1000px;
 }
 
 .service-card::before {
@@ -729,7 +727,7 @@ body::before {
         opacity: 0;
     }
     50% {
-        opacity: 1;
+        opacity: 0.3;
     }
     100% {
         transform: translateX(100%) translateY(100%) rotate(45deg);
@@ -1634,8 +1632,8 @@ body::before {
 }
 
 .service-card:hover {
-    transform: translateY(-10px) rotateX(5deg);
-    box-shadow: 0 20px 40px rgba(0, 102, 255, 0.3);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 102, 255, 0.2);
     border-color: var(--accent-primary);
 }
 
@@ -1917,7 +1915,7 @@ body::before {
 @keyframes priceCounter {
     from {
         opacity: 0;
-        transform: scale(0.5);
+        transform: scale(0.9);
     }
     to {
         opacity: 1;
@@ -2613,7 +2611,7 @@ body::before {
 @keyframes fadeInUp {
     from {
         opacity: 0;
-        transform: translateY(30px);
+        transform: translateY(10px);
     }
     to {
         opacity: 1;
@@ -2624,7 +2622,7 @@ body::before {
 @keyframes fadeInLeft {
     from {
         opacity: 0;
-        transform: translateX(-30px);
+        transform: translateX(-10px);
     }
     to {
         opacity: 1;
@@ -2635,7 +2633,7 @@ body::before {
 @keyframes fadeInRight {
     from {
         opacity: 0;
-        transform: translateX(30px);
+        transform: translateX(10px);
     }
     to {
         opacity: 1;
@@ -2645,8 +2643,8 @@ body::before {
 
 .animate-on-scroll {
     opacity: 0;
-    transform: translateY(30px);
-    transition: all 0.8s ease;
+    transform: translateY(10px);
+    transition: all 1s ease;
 }
 
 .animate-on-scroll.animated {
@@ -2913,7 +2911,7 @@ body::before {
     width: 100%;
     height: 100%;
     background: radial-gradient(circle, rgba(0, 102, 255, 0.05) 0%, transparent 70%);
-    animation: rotateGradient 20s linear infinite;
+    animation: rotateGradient 40s linear infinite;
 }
 
 @keyframes rotateGradient {
@@ -2946,7 +2944,7 @@ body::before {
     transition: all 0.3s ease;
     animation: problemFadeIn 0.6s ease-out forwards;
     opacity: 0;
-    transform: translateX(-20px);
+    transform: translateX(-10px);
 }
 
 .problem-item:nth-child(1) { animation-delay: 0.1s; }
@@ -2957,6 +2955,10 @@ body::before {
 .problem-item:nth-child(6) { animation-delay: 0.6s; }
 
 @keyframes problemFadeIn {
+    from {
+        opacity: 0;
+        transform: translateX(-10px);
+    }
     to {
         opacity: 1;
         transform: translateX(0);
@@ -2964,9 +2966,9 @@ body::before {
 }
 
 .problem-item:hover {
-    transform: translateX(10px);
-    background: rgba(255, 59, 48, 0.15);
-    border-color: rgba(255, 59, 48, 0.5);
+    transform: translateX(3px);
+    background: rgba(255, 59, 48, 0.12);
+    border-color: rgba(255, 59, 48, 0.4);
 }
 
 .problem-item i {
@@ -3081,7 +3083,7 @@ body::before {
 }
 
 .pulse {
-    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
 
 @keyframes pulse {
@@ -3135,8 +3137,8 @@ body::before {
 }
 
 .faq-item:hover {
-    transform: translateY(-5px) translateZ(0);
-    box-shadow: 0 15px 40px rgba(0, 102, 255, 0.2);
+    transform: translateY(-2px) translateZ(0);
+    box-shadow: 0 5px 15px rgba(0, 102, 255, 0.15);
     border-color: var(--accent-primary);
 }
 
@@ -3284,7 +3286,7 @@ body::before {
     text-decoration: none;
     font-weight: var(--font-weight-bold);
     font-size: 1.25rem;
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition: all 0.3s ease;
     box-shadow: 0 4px 20px rgba(0, 102, 255, 0.4);
     width: 100%;
     justify-content: center;
@@ -3311,8 +3313,8 @@ body::before {
 }
 
 .final-cta-button:hover {
-    transform: translateY(-3px) scale(1.02);
-    box-shadow: 0 10px 50px rgba(0, 102, 255, 0.7);
+    transform: translateY(-1px) scale(1.01);
+    box-shadow: 0 5px 20px rgba(0, 102, 255, 0.3);
 }
 
 .cta-note {
@@ -3333,7 +3335,7 @@ body::before {
     border-radius: var(--radius-md);
     color: #ef4444;
     font-weight: var(--font-weight-semibold);
-    animation: urgencyPulse 2s ease-in-out infinite;
+    animation: urgencyPulse 3s ease-in-out infinite;
 }
 
 @keyframes urgencyPulse {
