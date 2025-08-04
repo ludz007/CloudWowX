@@ -52,7 +52,7 @@ Preferred communication style: Simple, everyday language.
 - **Unified User Journey**: All product links redirect to Cal.com booking for consultation-based sales approach
 
 ### Recent Updates (January 2025)
-- **Dark Theme Transformation**: Complete OpenAI-style dark theme implementation with teal accent colors (#00a67e)
+- **Dark Theme Transformation**: Complete OpenAI-style dark theme implementation with blue accent colors (#2563eb)
 - **Cal.com Integration**: Replaced CRM iframe popup with direct Cal.com booking links for simplified user journey
 - **Dark Footer Redesign**: Implemented OpenAI-style dark footer with CloudwowX logo and comprehensive company description
 - **Unified Booking Flow**: All product and service links now redirect to Cal.com booking instead of popup modals
