@@ -13,7 +13,6 @@ function initializeApp() {
     setupROICalculator();
     setupLiveActivity();
     setupCountdownTimer();
-    setupVideoHandlers();
     setupPerformanceOptimizations();
 }
 
@@ -132,50 +131,7 @@ function setupCountdownTimer() {
     // Static display - no countdown
 }
 
-// Video Handlers
-function setupVideoHandlers() {
-    const aiCallerVideo = document.querySelector('.ai-caller-demo-video');
-    
-    if (aiCallerVideo) {
-        console.log('AI Caller video element found, setting up handlers');
-        
-        // Video load event
-        aiCallerVideo.addEventListener('loadedmetadata', function() {
-            console.log('AI Caller video metadata loaded successfully');
-        });
-        
-        // Video error event
-        aiCallerVideo.addEventListener('error', function(e) {
-            console.error('AI Caller video error:', e);
-            console.error('Video error details:', {
-                error: aiCallerVideo.error,
-                networkState: aiCallerVideo.networkState,
-                readyState: aiCallerVideo.readyState,
-                src: aiCallerVideo.currentSrc
-            });
-        });
-        
-        // Video can play event
-        aiCallerVideo.addEventListener('canplay', function() {
-            console.log('AI Caller video can play');
-        });
-        
-        // Check if video is visible
-        const container = document.querySelector('.ai-caller-video-container');
-        if (container) {
-            const rect = container.getBoundingClientRect();
-            console.log('Video container position:', {
-                top: rect.top,
-                left: rect.left,
-                width: rect.width,
-                height: rect.height,
-                visible: rect.width > 0 && rect.height > 0
-            });
-        }
-    } else {
-        console.error('AI Caller video element not found!');
-    }
-}
+
 
 // Performance Optimizations
 function setupPerformanceOptimizations() {
