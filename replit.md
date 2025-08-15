@@ -72,3 +72,17 @@ Preferred communication style: Simple, everyday language.
   - Professional badge language: "Enterprise-Grade AI Solutions"
   - Benefit-focused without aggressive employee replacement language
   - Clean, modern presentation that strategically encourages bookings
+- **AI Caller Video Integration**: Added demo video to AI Caller service card (August 7):
+  - Embedded video player with professional styling
+  - Video URL: https://landing.cloudwowx.com/wp-content/uploads/2025/06/v2.mp4
+  - Added hover effects and responsive video container
+- **Meta Pixel Integration**: Added Facebook tracking pixel for marketing analytics (August 15):
+  - Pixel ID: 746666361178162
+  - Properly positioned in head section for Event Setup Tool compatibility
+  - PageView tracking active with noscript fallback
+- **Service Portfolio Enhancement**: Complete overhaul of all service cards with pricing and subscription buttons (August 15):
+  - Added accurate pricing from service portfolio document
+  - Implemented "Subscribe Now" buttons with direct sign-up links
+  - Updated service features to match actual capabilities
+  - Created professional pricing display with gradient buttons
+  - All services now have clear call-to-action for immediate purchase

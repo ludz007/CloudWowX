@@ -1603,6 +1603,72 @@ body::before {
     color: #06b6d4;
 }
 
+/* Service Pricing Styles */
+.service-pricing {
+    margin: var(--spacing-lg) 0;
+    padding: var(--spacing-md);
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border-color);
+    text-align: center;
+}
+
+.service-pricing .price {
+    font-size: 1.75rem;
+    font-weight: var(--font-weight-bold);
+    color: var(--accent-primary);
+    margin-bottom: var(--spacing-xs);
+}
+
+.service-pricing .price-note {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    font-weight: var(--font-weight-medium);
+}
+
+.service-actions {
+    display: flex;
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-lg);
+    flex-direction: column;
+}
+
+.subscribe-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-md) var(--spacing-lg);
+    background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
+    color: white;
+    text-decoration: none;
+    border-radius: var(--radius-lg);
+    font-weight: var(--font-weight-semibold);
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.subscribe-button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 8px 25px -8px var(--accent-primary);
+    background: linear-gradient(135deg, var(--accent-secondary) 0%, var(--accent-primary) 100%);
+}
+
+@media (min-width: 768px) {
+    .service-actions {
+        flex-direction: row;
+    }
+    
+    .subscribe-button {
+        flex: 1;
+    }
+    
+    .service-link {
+        flex: 1;
+    }
+}
+
 /* AI Caller Video Styles */
 .ai-caller-video-container {
     position: relative;
