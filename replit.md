@@ -86,3 +86,9 @@ Preferred communication style: Simple, everyday language.
   - Updated service features to match actual capabilities
   - Created professional pricing display with gradient buttons
   - All services now have clear call-to-action for immediate purchase
+- **AI Starter Kit Removal & Services Summary**: Replaced complex bundle pricing with simplified service selection (August 17):
+  - Removed AI Starter Kit "Limited Time Offer" section completely
+  - Created clean services summary section with all 7 services listed
+  - Each service shows name, description, pricing, and direct subscribe button
+  - Simplified user journey: browse individual services and subscribe directly
+  - Maintained professional design with consistent pricing display across all touchpoints
