@@ -1633,6 +1633,29 @@ body::before {
     flex-direction: column;
 }
 
+.primary-cta-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-md) var(--spacing-xl);
+    background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
+    color: white;
+    text-decoration: none;
+    border-radius: var(--radius-lg);
+    font-weight: var(--font-weight-bold);
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 15px -4px var(--accent-primary);
+}
+
+.primary-cta-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px -8px var(--accent-primary);
+    background: linear-gradient(135deg, var(--accent-secondary) 0%, var(--accent-primary) 100%);
+}
+
 .subscribe-button {
     display: inline-flex;
     align-items: center;
