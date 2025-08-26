@@ -105,9 +105,14 @@
             <div class="hero-visual">
 
                 <div class="video-container" style="margin-top: var(--spacing-xl);">
-                    <video class="hero-demo-video" controls poster="">
+                    <video class="hero-demo-video" controls preload="metadata" crossorigin="anonymous">
                         <source src="https://landing.cloudwowx.com/wp-content/uploads/2025/07/CloudwowX-Intro.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
+                        <div class="video-error">
+                            <p style="color: #ef4444; padding: 20px; background: rgba(239, 68, 68, 0.1); border-radius: 8px; text-align: center;">
+                                Video temporarily unavailable. 
+                                <a href="https://landing.cloudwowx.com/wp-content/uploads/2025/07/CloudwowX-Intro.mp4" target="_blank" style="color: #06b6d4; text-decoration: underline;">Click here to watch the CloudwowX demo video</a>
+                            </p>
+                        </div>
                     </video>
                     <div class="video-caption">
                         <i class="fas fa-play-circle"></i>

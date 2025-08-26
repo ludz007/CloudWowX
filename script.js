@@ -13,6 +13,7 @@ function initializeApp() {
     setupROICalculator();
     setupLiveActivity();
     setupCountdownTimer();
+    setupHeroVideoHandler();
     setupPerformanceOptimizations();
 }
 
@@ -129,6 +130,75 @@ function setupLiveActivity() {
 // Countdown Timer
 function setupCountdownTimer() {
     // Static display - no countdown
+}
+
+// Hero Video Handler
+function setupHeroVideoHandler() {
+    const heroVideo = document.querySelector('.hero-demo-video');
+    
+    if (heroVideo) {
+        console.log('Hero video element found, setting up handlers');
+        
+        // Video load event
+        heroVideo.addEventListener('loadedmetadata', function() {
+            console.log('Hero video metadata loaded successfully');
+            console.log('Video duration:', heroVideo.duration, 'seconds');
+        });
+        
+        // Video error event
+        heroVideo.addEventListener('error', function(e) {
+            console.error('Hero video error:', e);
+            console.error('Video error details:', {
+                error: heroVideo.error,
+                networkState: heroVideo.networkState,
+                readyState: heroVideo.readyState,
+                src: heroVideo.currentSrc
+            });
+            
+            // Show fallback message
+            const container = heroVideo.parentElement;
+            if (container) {
+                container.innerHTML = `
+                    <div class="video-fallback" style="padding: var(--spacing-xl); text-align: center; background: rgba(6, 182, 212, 0.1); border-radius: var(--radius-lg); border: 2px solid rgba(6, 182, 212, 0.3);">
+                        <i class="fas fa-video" style="font-size: 3rem; color: var(--accent-primary); margin-bottom: var(--spacing-md);"></i>
+                        <h3 style="color: var(--text-primary); margin-bottom: var(--spacing-md);">CloudwowX Demo Video</h3>
+                        <p style="color: var(--text-secondary); margin-bottom: var(--spacing-lg);">Experience how our AI automation transforms businesses</p>
+                        <a href="https://landing.cloudwowx.com/wp-content/uploads/2025/07/CloudwowX-Intro.mp4" target="_blank" class="primary-button">
+                            <i class="fas fa-external-link-alt"></i>
+                            Watch Demo Video
+                        </a>
+                    </div>
+                `;
+            }
+        });
+        
+        // Video can play event
+        heroVideo.addEventListener('canplay', function() {
+            console.log('Hero video can play');
+        });
+        
+        // Check if video is visible and accessible
+        const container = heroVideo.parentElement;
+        if (container) {
+            const rect = container.getBoundingClientRect();
+            console.log('Video container position:', {
+                top: rect.top,
+                left: rect.left,
+                width: rect.width,
+                height: rect.height,
+                visible: rect.width > 0 && rect.height > 0
+            });
+        }
+        
+        // Test video loading after a short delay
+        setTimeout(() => {
+            if (heroVideo.readyState === 0) {
+                console.warn('Video not loading after 3 seconds, may have connectivity issues');
+            }
+        }, 3000);
+    } else {
+        console.error('Hero video element not found!');
+    }
 }
 
 
