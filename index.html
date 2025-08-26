@@ -105,15 +105,15 @@
             <div class="hero-visual">
 
                 <div class="video-container" style="margin-top: var(--spacing-xl);">
-                    <video class="hero-demo-video" controls preload="metadata" crossorigin="anonymous">
-                        <source src="https://landing.cloudwowx.com/wp-content/uploads/2025/07/CloudwowX-Intro.mp4" type="video/mp4">
-                        <div class="video-error">
-                            <p style="color: #ef4444; padding: 20px; background: rgba(239, 68, 68, 0.1); border-radius: 8px; text-align: center;">
-                                Video temporarily unavailable. 
-                                <a href="https://landing.cloudwowx.com/wp-content/uploads/2025/07/CloudwowX-Intro.mp4" target="_blank" style="color: #06b6d4; text-decoration: underline;">Click here to watch the CloudwowX demo video</a>
-                            </p>
-                        </div>
-                    </video>
+                    <div class="video-fallback" style="padding: var(--spacing-xl); text-align: center; background: rgba(6, 182, 212, 0.1); border-radius: var(--radius-lg); border: 2px solid rgba(6, 182, 212, 0.3);">
+                        <i class="fas fa-video" style="font-size: 3rem; color: var(--accent-primary); margin-bottom: var(--spacing-md);"></i>
+                        <h3 style="color: var(--text-primary); margin-bottom: var(--spacing-md);">CloudwowX Demo Video</h3>
+                        <p style="color: var(--text-secondary); margin-bottom: var(--spacing-lg);">See how our AI automation transforms businesses like yours</p>
+                        <a href="https://landing.cloudwowx.com/wp-content/uploads/2025/07/CloudwowX-Intro.mp4" target="_blank" class="primary-button">
+                            <i class="fas fa-external-link-alt"></i>
+                            Watch Demo Video
+                        </a>
+                    </div>
                     <div class="video-caption">
                         <i class="fas fa-play-circle"></i>
                         <span>Watch how CloudwowX transforms your business</span>
